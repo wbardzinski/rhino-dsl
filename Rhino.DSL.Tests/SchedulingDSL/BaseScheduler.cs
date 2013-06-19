@@ -5,6 +5,14 @@ namespace Rhino.DSL.Tests.SchedulingDSL
 	using Boo.Lang.Compiler.Ast;
 	using Boo.Lang.Compiler.MetaProgramming;
 
+    public static class IntExtensions
+    {
+        public static TimeSpan Minutes(this int number)
+        {
+            return TimeSpan.FromMinutes(number);
+        }
+    }
+
 	public abstract class BaseScheduler
 	{
 		protected TimeSpan repetition;
@@ -77,12 +85,6 @@ namespace Rhino.DSL.Tests.SchedulingDSL
 			// this is a fake, just for testing, would probably be
 			// DateTime.Now in real code
 			get { return new DateTime(2000, 1, 1); }
-		}
-
-		[Extension]
-		public static TimeSpan Minutes(int number)
-		{
-			return TimeSpan.FromMinutes(number);
 		}
 
 		#region Exposed For Testing
